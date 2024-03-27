@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.1//EN" "http://www.w3.org/Graphics/SVG/1.1/DTD/svg11.dtd">
+<!-- Creator: CorelDRAW 2017 -->
+<svg xmlns="http://www.w3.org/2000/svg" xml:space="preserve" width="136.856mm" height="136.855mm" version="1.1" style="shape-rendering:geometricPrecision; text-rendering:geometricPrecision; image-rendering:optimizeQuality; fill-rule:evenodd; clip-rule:evenodd"
+viewBox="0 0 295678 295677"
+ xmlns:xlink="http://www.w3.org/1999/xlink">
+ <defs>
+  <style type="text/css">
+   <![CDATA[
+    .fil1 {fill:#FEFEFE}
+    .fil0 {fill:url(#id0)}
+    .fil3 {fill:url(#id1);fill-rule:nonzero}
+    .fil4 {fill:url(#id2);fill-rule:nonzero}
+    .fil5 {fill:url(#id3);fill-rule:nonzero}
+    .fil2 {fill:url(#id4);fill-rule:nonzero}
+   ]]>
+  </style>
+  <radialGradient id="id0" gradientUnits="userSpaceOnUse" gradientTransform="matrix(0.0393168 -0 -0 1 142027 0)" cx="147839" cy="147839" r="133763" fx="147839" fy="147839">
+   <stop offset="0" style="stop-opacity:1; stop-color:#5591E6"/>
+   <stop offset="0.94902" style="stop-opacity:1; stop-color:#3C7BDF"/>
+   <stop offset="1" style="stop-opacity:1; stop-color:#2366D9"/>
+  </radialGradient>
+  <radialGradient id="id1" gradientUnits="userSpaceOnUse" gradientTransform="matrix(0.213505 -0 -0 1 84400 0)" cx="107312" cy="147839" r="79343" fx="107312" fy="147839">
+   <stop offset="0" style="stop-opacity:1; stop-color:#2C87E8"/>
+   <stop offset="0.541176" style="stop-opacity:1; stop-color:#1A5DB5"/>
+   <stop offset="1" style="stop-opacity:1; stop-color:#093382"/>
+  </radialGradient>
+  <radialGradient id="id2" gradientUnits="userSpaceOnUse" gradientTransform="matrix(0.390314 -0 -0 1 104625 0)" cx="171605" cy="147839" r="79343" fx="171605" fy="147839">
+   <stop offset="0" style="stop-opacity:1; stop-color:#74B3F7"/>
+   <stop offset="0.458824" style="stop-opacity:1; stop-color:#327AD3"/>
+   <stop offset="0.290196" style="stop-opacity:1; stop-color:#3E73BC"/>
+   <stop offset="1" style="stop-opacity:1; stop-color:#093382"/>
+  </radialGradient>
+  <radialGradient id="id3" gradientUnits="userSpaceOnUse" gradientTransform="matrix(0.293276 -0 -0 0.999999 82069 0)" cx="116126" cy="93960" r="34247" fx="116126" fy="93960">
+   <stop offset="0" style="stop-opacity:1; stop-color:#137CED"/>
+   <stop offset="0.45098" style="stop-opacity:1; stop-color:#0E57B7"/>
+   <stop offset="1" style="stop-opacity:1; stop-color:#093382"/>
+  </radialGradient>
+  <radialGradient id="id4" gradientUnits="userSpaceOnUse" gradientTransform="matrix(0.999994 -0 -0 0.00194886 1 242148)" cx="121165" cy="242621" r="5345" fx="121165" fy="242621">
+   <stop offset="0" style="stop-opacity:1; stop-color:#74B3F7"/>
+   <stop offset="0.411765" style="stop-opacity:1; stop-color:#327AD3"/>
+   <stop offset="0.317647" style="stop-opacity:1; stop-color:#4074BC"/>
+   <stop offset="1" style="stop-opacity:1; stop-color:#0C3582"/>
+  </radialGradient>
+ </defs>
+ <g id="Layer_x0020_1">
+  <metadata id="CorelCorpID_0Corel-Layer"/>
+  <g id="_2869338049328">
+   <circle class="fil0" cx="147839" cy="147839" r="147839"/>
+   <g>
+    <circle class="fil1" cx="147839" cy="147839" r="133763"/>
+    <g>
+     <polygon class="fil2" points="127551,242609 127551,242634 114779,242634 "/>
+     <path class="fil3" d="M127551 166069l0 42049c-1526,15552 -8559,28224 -12771,34516l-27707 -158447 6830 -31143 33589 115518 59 -2493z"/>
+     <path class="fil4" d="M134606 53044l6528 0c18814,0 33411,5448 43791,16391 11556,12270 17314,27761 17314,46568 0,19187 -7136,35388 -21409,48558l27775 78072 -50603 0 -23396 -61017 0 -48700 3812 0c10096,0 15164,-5116 15164,-15396 0,-9048 -5839,-13596 -17557,-13596l-1419 0 0 -50879z"/>
+     <polygon class="fil5" points="127551,103923 127551,134877 104126,53044 127624,53044 128126,103923 "/>
+    </g>
+   </g>
+  </g>
+ </g>
+</svg>
