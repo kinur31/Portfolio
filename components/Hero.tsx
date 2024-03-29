@@ -117,7 +117,7 @@ const Hero = () => {
               containerStyles="absolute top-[55%] -right-8"
               icon={<RiTeamFill />}
               endCountNum={1}
-              endCountText="k"
+              // endCountText="k"
               badgeText="Finished Projects"
             />
             <div className="bg-hero_shape2_light dark:bg-hero_shape2_dark w-[500px] h-[500px] bg-no-repeat absolute -top-1 -right-2"></div>
