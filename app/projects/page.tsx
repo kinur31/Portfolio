@@ -55,13 +55,7 @@ const Page = () => {
               ))}
             </TabsList>
           </div>
-          <div
-            className={`text-lg xl:mt-8 mx-auto grid ${
-              filteredProjects.length < 3
-                ? "grid-cols-1"
-                : "grid-cols-3 lg:grid-cols-3"
-            } gap-4`}
-          >
+          <div className="text-lg xl:mt-8 mx-auto grid grid-cols-1 lg:grid-cols-3 gap-4">
             {filteredProjects.map((project, index) => (
               <TabsContent
                 value={category}
