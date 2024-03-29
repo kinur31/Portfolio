@@ -127,7 +127,7 @@ const About = () => {
   return (
     <section
       id="about"
-      className="flex flex-col items-center justify-center gap-3 h-full relative py-35 xl:py-20"
+      className="flex flex-col items-center justify-center gap-3 h-full relative py-20"
     >
       <div className="container mx-auto">
         <h2 className="section-title mb-8 xl:mb-4 text-center mx-auto">
