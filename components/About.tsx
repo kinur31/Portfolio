@@ -60,7 +60,7 @@ const qualificationData: QualificationItem[] = [
       },
       {
         education: "Dian Nuswantoro University",
-        qualification: "Bachelor of Science",
+        qualification: "Bachelor of Computer Science",
         years: "2017 - 2021",
       },
     ],
@@ -69,18 +69,18 @@ const qualificationData: QualificationItem[] = [
     title: "experience",
     data: [
       {
-        company: "Raffa General Hospital",
-        role: "IT Support Specialist",
+        company: "Raffa Majenang General Hospital",
+        role: "IT Support",
         years: "2021 - 2023",
       },
       {
         company: "Dian Nuswantoro University",
-        role: "Assistant Laboratorium",
+        role: "Laboratory Assistant",
         years: "2019 - 2019",
       },
       {
         company: "PT. Data Campus Media",
-        role: "Intern Campus",
+        role: "Internship",
         years: "2019 - 2019",
       },
     ],
@@ -91,10 +91,10 @@ const skillData: QualificationItem[] = [
   {
     title: "skills",
     data: [
-      { name: "HTML, CSS" },
-      { name: "Front-end Development" },
-      { name: "Javascript, NodeJS" },
-      { name: "Back-end Development" },
+      { name: "Javascript, Typescript, React JS" },
+      { name: "Node JS, Express JS, Rest API" },
+      { name: "HTML, CSS, Tailwind, Chakra UI" },
+      { name: "Git, MySQL, ORM, Redux, Jira" },
     ],
   },
   {

@@ -2,66 +2,7 @@
 import { useState, useEffect, useRef } from "react";
 import { Tabs, TabsList, TabsTrigger, TabsContent } from "@/components/ui/tabs";
 import ProjectCard from "@/components/ProjectCard";
-
-interface ProjectItem {
-  image: string;
-  category: string;
-  name: string;
-  description: string;
-  link: string;
-  github: string;
-}
-
-const ProjectData: ProjectItem[] = [
-  {
-    image: "/work/3.png",
-    category: "reactJS",
-    name: "EventIn",
-    description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
-    link: "/",
-    github: "/",
-  },
-  {
-    image: "/work/4.png",
-    category: "reactJS",
-    name: "EventIn",
-    description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
-    link: "/",
-    github: "/",
-  },
-  {
-    image: "/work/1.png",
-    category: "laravel",
-    name: "EventIn",
-    description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
-    link: "/",
-    github: "/",
-  },
-  {
-    image: "/work/3.png",
-    category: "reactJS",
-    name: "EventIn",
-    description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
-    link: "/",
-    github: "/",
-  },
-  {
-    image: "/work/4.png",
-    category: "reactJS",
-    name: "EventIn",
-    description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
-    link: "/",
-    github: "/",
-  },
-  {
-    image: "/work/1.png",
-    category: "reactJS",
-    name: "EventIn",
-    description: "Lorem ipsum dolor sit amet consectetur, adipisicing elit.",
-    link: "/",
-    github: "/",
-  },
-];
+import { ProjectData } from "./projectData";
 
 function getUniqueCategories(data: { category: string }[]): string[] {
   const uniqueCategoriesSet = new Set<string>();
@@ -78,7 +19,6 @@ const Page = () => {
   const firstTabRef = useRef<HTMLButtonElement>(null);
 
   useEffect(() => {
-    // Fokus pada tab pertama ketika komponen dimuat
     if (firstTabRef.current) {
       firstTabRef.current.scrollIntoView({
         behavior: "smooth",

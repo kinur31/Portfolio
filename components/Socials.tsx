@@ -13,11 +13,11 @@ interface SocialsProps {
 
 const icons: Icon[] = [
   {
-    path: "/",
+    path: "https://www.linkedin.com/in/rizky-noor-ichwanudin",
     name: <RiLinkedinFill />,
   },
   {
-    path: "/",
+    path: "https://github.com/kinur31",
     name: <RiGithubFill />,
   },
 ];
@@ -26,7 +26,12 @@ const Socials: React.FC<SocialsProps> = ({ containerStyles, iconsStyles }) => {
   return (
     <div className={`${containerStyles}`}>
       {icons.map((icon, index) => (
-        <Link href={icon.path} key={index}>
+        <Link
+          href={icon.path}
+          target="_blank"
+          rel="noopener noreferrer"
+          key={index}
+        >
           <div className={`${iconsStyles}`}>{icon.name}</div>
         </Link>
       ))}

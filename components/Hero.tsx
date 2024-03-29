@@ -35,8 +35,8 @@ const Hero = () => {
     const section = document.getElementById("about");
     if (section) {
       const sectionMiddle = section.offsetTop + section.clientHeight / 6;
-      const scrollToPosition = sectionMiddle - window.innerHeight / 4; 
-      
+      const scrollToPosition = sectionMiddle - window.innerHeight / 4;
+
       window.scrollTo({
         top: scrollToPosition,
         behavior: "smooth",
@@ -85,9 +85,15 @@ const Hero = () => {
                   Contact me <Send size={18} />
                 </Button>
               </Link>
-              <Button variant="secondary" className="gap-x-2">
-                Download CV <Download size={18} />
-              </Button>
+              <Link
+                href="https://drive.google.com/file/d/1cHED6KRoF5272HW_6oahHFpzSHbKWziy/view"
+                target="_blank"
+                rel="noopener noreferrer"
+              >
+                <Button variant="secondary" className="gap-x-2">
+                  Download CV <Download size={18} />
+                </Button>
+              </Link>
             </div>
           </div>
           {/* image */}
