@@ -7,13 +7,14 @@ interface DevImgProps {
 
 const DevImg: React.FC<DevImgProps> = ({ containerStyles, imgSrc }) => {
   return (
-    <div className={`relative rounded-full overflow-hidden ${containerStyles}`}>
+    <div className={`relative ${containerStyles}`}>
       <Image
         src={imgSrc}
-        width={500}
-        height={500}
-        className="rounded-full"
-        alt=""
+        fill
+        priority
+        sizes="(max-width: 768px) 100vw, 500px"
+        className="object-contain object-bottom"
+        alt="Rizky Noor Ichwanudin - Developer"
       />
     </div>
   );

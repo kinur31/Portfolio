@@ -1,9 +1,13 @@
-import { useState, useEffect, useRef } from "react";
-import { motion } from "framer-motion";
-import { usePathname, useRouter } from "next/navigation";
+"use client";
 
-interface Link {
+import { useState, useEffect } from "react";
+import { motion } from "framer-motion";
+import { usePathname } from "next/navigation";
+import Link from "next/link";
+
+interface NavLinkItem {
   path: string;
+  id?: string;
   name: string;
 }
 
@@ -11,139 +15,115 @@ interface NavProps {
   containerStyles: string;
   linkStyles?: string;
   underLineStyles?: string;
-  onClick?: () => void;
+  onItemClick?: () => void;
 }
+
+const homeLinks: NavLinkItem[] = [
+  { path: "/#hero", id: "hero", name: "Home" },
+  { path: "/#about", id: "about", name: "About" },
+  { path: "/#service", id: "service", name: "Services" },
+  { path: "/#project", id: "project", name: "Projects" },
+  { path: "/#contact", id: "contact", name: "Contact" },
+];
+
+const generalLinks: NavLinkItem[] = [
+  { path: "/", id: "home", name: "Home" },
+  { path: "/projects", id: "projects", name: "Projects" },
+  { path: "/contact", id: "contact", name: "Contact" },
+];
 
 const Nav: React.FC<NavProps> = ({
   containerStyles,
-  linkStyles,
-  underLineStyles,
-  onClick,
+  linkStyles = "",
+  underLineStyles = "",
+  onItemClick,
 }) => {
-  const router = useRouter();
   const pathname = usePathname();
-  const [activePath, setActivePath] = useState<string>(pathname);
-  const navRef = useRef<HTMLDivElement>(null);
-  const timeoutId = useRef<NodeJS.Timeout | null>(null);
+  const [activeSection, setActiveSection] = useState<string>("hero");
 
   useEffect(() => {
-    if (pathname !== "/") {
-      setActivePath(pathname);
-    } else {
-      setActivePath("/");
-    }
+    if (pathname !== "/") return;
+
+    const sectionIds = ["hero", "about", "service", "project", "contact"];
+    const elements: HTMLElement[] = [];
 
     const handleScroll = () => {
-      const scrollPosition = window.scrollY;
-      const middleOfPage = scrollPosition + window.innerHeight / 2;
-      const newPotentialPaths: string[] = [];
+      // If at the very top of page, force 'hero' active
+      if (window.scrollY < 100) {
+        setActiveSection("hero");
+        return;
+      }
 
-      links.forEach((link) => {
-        if (link.path.startsWith("#")) {
-          const section = document.querySelector(link.path) as HTMLElement;
-          if (section) {
-            const sectionMiddle =
-              section.offsetTop + section.clientHeight / 2;
-            if (
-              middleOfPage >=
-                sectionMiddle - window.innerHeight / 4 &&
-              middleOfPage <
-                sectionMiddle + window.innerHeight / 4
-            ) {
-              newPotentialPaths.push(link.path);
-            }
-          }
-        } else {
-          if (link.path === "/") {
-            if (scrollPosition === 0) {
-              newPotentialPaths.push(link.path);
-            }
-          } else {
-            if (pathname === link.path) {
-              newPotentialPaths.push(link.path);
-            }
+      // Check which section is currently centered in viewport
+      const scrollY = window.scrollY + 180;
+      for (const id of sectionIds) {
+        const el = document.getElementById(id);
+        if (el) {
+          const top = el.offsetTop;
+          const height = el.offsetHeight;
+          if (scrollY >= top && scrollY < top + height) {
+            setActiveSection(id);
+            break;
           }
         }
-      });
-
-      if (newPotentialPaths.length === 1) {
-        setActivePath(newPotentialPaths[0]);
-      }
-
-      if (timeoutId.current) {
-        clearTimeout(timeoutId.current);
-      }
-
-      timeoutId.current = setTimeout(() => {
-        if (newPotentialPaths.length === 1) {
-          setActivePath(newPotentialPaths[0]);
-        }
-      }, 200);
-    };
-
-    window.addEventListener("scroll", handleScroll);
-
-    return () => {
-      window.removeEventListener("scroll", handleScroll);
-      if (timeoutId.current) {
-        clearTimeout(timeoutId.current);
       }
     };
+
+    window.addEventListener("scroll", handleScroll, { passive: true });
+    handleScroll();
+
+    return () => window.removeEventListener("scroll", handleScroll);
   }, [pathname]);
 
-  const handleNavLinkClick = (path: string) => {
-    if (path === '/' && pathname === '/') {
-      window.scrollTo({ top: 0, behavior: 'smooth' });
-    } else if (path.startsWith('#')) {
-      const section = document.querySelector(path) as HTMLElement;
-      if (section) {
-        const targetOffset = section.offsetTop - 30;
-        window.scrollTo({ top: targetOffset, behavior: 'smooth' });
+  const links = pathname === "/" ? homeLinks : generalLinks;
+
+  const isActive = (item: NavLinkItem) => {
+    if (pathname === "/") {
+      return activeSection === item.id;
+    }
+    return pathname === item.path;
+  };
+
+  const handleLinkClick = (e: React.MouseEvent<HTMLAnchorElement>, item: NavLinkItem) => {
+    if (pathname === "/" && item.id) {
+      const el = document.getElementById(item.id);
+      if (el) {
+        e.preventDefault();
+        setActiveSection(item.id);
+        const yOffset = -80; // height of header
+        const y = el.getBoundingClientRect().top + window.pageYOffset + yOffset;
+        window.scrollTo({ top: y, behavior: "smooth" });
       }
-    } else {
-      router.push(path);
+    }
+    if (onItemClick) {
+      onItemClick();
     }
   };
-  
-
-  let links: Link[] = [];
-  if (pathname === "/") {
-    links = [
-      { path: "/", name: "Home" },
-      { path: "#about", name: "About" },
-      { path: "#service", name: "Service" },
-      { path: "#project", name: "My Project" },
-      { path: "#contact", name: "Contact" },
-    ];
-  } else {
-    links = [
-      { path: "/", name: "Home" },
-      { path: "/projects", name: "Projects" },
-      { path: "/contact", name: "Contact" },
-    ];
-  }
 
   return (
-    <nav className={containerStyles} ref={navRef}onClick={onClick}>
-      {links.map(({ path, name }) => (
-        <div
-          key={path}
-          onClick={() => handleNavLinkClick(path)}
-          className={`capitalize ${linkStyles} cursor-pointer`}
-        >
-          {name}
-          {activePath === path && (
-            <motion.span
-              key={path}
-              initial={{ y: "-100%" }}
-              animate={{ y: 0 }}
-              transition={{ type: "tween", ease: "easeOut", duration: 0.5 }}
-              layoutId="underline"
-              className={underLineStyles}
-            />
-          )}
-        </div>
-      ))}
+    <nav className={containerStyles}>
+      {links.map((item) => {
+        const active = isActive(item);
+        return (
+          <Link
+            key={item.path}
+            href={item.path}
+            onClick={(e) => handleLinkClick(e, item)}
+            className={`capitalize ${linkStyles} ${
+              active ? "text-primary font-semibold" : "text-foreground/75 hover:text-foreground"
+            }`}
+          >
+            {item.name}
+            {active && (
+              <motion.span
+                layoutId="nav-underline"
+                className={underLineStyles}
+                transition={{ type: "spring", stiffness: 450, damping: 32 }}
+              />
+            )}
+          </Link>
+        );
+      })}
     </nav>
   );
 };

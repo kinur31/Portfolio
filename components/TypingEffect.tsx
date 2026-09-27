@@ -1,46 +1,49 @@
+"use client";
+
 import { useState, useEffect } from "react";
 
+const phrases = [
+  "Full-Stack Developer",
+  "Laravel & PHP Specialist",
+  "React & Vue Architect",
+  "Node.js & API Engineer",
+];
+
 const TypingEffect = () => {
+  const [phraseIndex, setPhraseIndex] = useState(0);
   const [text, setText] = useState("");
-  const [index, setIndex] = useState(0);
-  const [isTypingForward, setIsTypingForward] = useState(true);
-  const phrases = ["Software Developer"];
-  const typingSpeed = 100;
-  const pauseDuration = 2000;
+  const [isDeleting, setIsDeleting] = useState(false);
 
   useEffect(() => {
-    const interval = setInterval(() => {
-      if (isTypingForward) {
-        if (index < phrases[0].length) {
-          setText((prev) => prev + phrases[0][index]);
-          setIndex((prev) => prev + 1);
+    const currentPhrase = phrases[phraseIndex] ?? "";
+    const typingSpeed = isDeleting ? 40 : 80;
+
+    const timer = setTimeout(() => {
+      if (!isDeleting) {
+        if (text.length < currentPhrase.length) {
+          setText(currentPhrase.slice(0, text.length + 1));
         } else {
-          setTimeout(() => {
-            setIsTypingForward(false);
-          }, pauseDuration);
+          setTimeout(() => setIsDeleting(true), 1500);
         }
       } else {
-        if (index > 0) {
-          setText((prev) => prev.slice(0, -1));
-          setIndex((prev) => prev - 1);
+        if (text.length > 0) {
+          setText(currentPhrase.slice(0, text.length - 1));
         } else {
-          setIsTypingForward(true);
-          setText("");
-          setIndex(0);
+          setIsDeleting(false);
+          setPhraseIndex((prev) => (prev + 1) % phrases.length);
         }
       }
     }, typingSpeed);
 
-    return () => clearInterval(interval);
-  }, [index, isTypingForward, phrases, typingSpeed, pauseDuration]);
+    return () => clearTimeout(timer);
+  }, [text, isDeleting, phraseIndex]);
 
   return (
-<div className="flex items-center justify-center xl:justify-start">
-      <h1 className="text-3xl font-bold md:text-4xl xl:text-5xl">
-  a <span className="text-primary">{text}</span>
-  <span className="animate-typing">|</span>
-</h1>
-
+    <div className="flex items-center justify-center xl:justify-start min-h-[48px]">
+      <span className="text-2xl font-bold md:text-3xl xl:text-4xl text-foreground">
+        a <span className="text-primary">{text}</span>
+        <span className="animate-typing">|</span>
+      </span>
     </div>
   );
 };

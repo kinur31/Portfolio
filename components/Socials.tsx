@@ -1,9 +1,11 @@
-import { RiLinkedinFill, RiGithubFill } from "react-icons/ri";
+import { RiLinkedinFill, RiGithubFill, RiGitlabFill } from "react-icons/ri";
 import Link from "next/link";
+import { personalInfo } from "@/data/profile";
 
-interface Icon {
+interface SocialItem {
+  label: string;
   path: string;
-  name: JSX.Element;
+  icon: React.ReactNode;
 }
 
 interface SocialsProps {
@@ -11,28 +13,37 @@ interface SocialsProps {
   iconsStyles: string;
 }
 
-const icons: Icon[] = [
+const icons: SocialItem[] = [
   {
-    path: "https://www.linkedin.com/in/rizky-noor-ichwanudin",
-    name: <RiLinkedinFill />,
+    label: "LinkedIn Profile",
+    path: personalInfo.linkedinUrl,
+    icon: <RiLinkedinFill />,
   },
   {
-    path: "https://github.com/kinur31",
-    name: <RiGithubFill />,
+    label: "GitHub Profile",
+    path: personalInfo.githubUrl,
+    icon: <RiGithubFill />,
+  },
+  {
+    label: "GitLab Profile",
+    path: personalInfo.gitlabUrl,
+    icon: <RiGitlabFill />,
   },
 ];
 
 const Socials: React.FC<SocialsProps> = ({ containerStyles, iconsStyles }) => {
   return (
-    <div className={`${containerStyles}`}>
-      {icons.map((icon, index) => (
+    <div className={containerStyles}>
+      {icons.map((item, index) => (
         <Link
-          href={icon.path}
+          href={item.path}
           target="_blank"
           rel="noopener noreferrer"
+          aria-label={item.label}
           key={index}
+          className="focus:outline-none focus:ring-2 focus:ring-primary rounded p-1"
         >
-          <div className={`${iconsStyles}`}>{icon.name}</div>
+          <div className={iconsStyles}>{item.icon}</div>
         </Link>
       ))}
     </div>
