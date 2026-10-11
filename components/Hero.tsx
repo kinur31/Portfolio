@@ -87,7 +87,7 @@ const Hero = () => {
             <Badge
               containerStyles="absolute top-[80%] -left-[1rem]"
               icon={<RiTodoFill />}
-              endCountNum={8}
+              endCountNum={10}
               endCountText="+"
               badgeText="Finished Projects"
             />

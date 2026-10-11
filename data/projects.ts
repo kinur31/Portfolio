@@ -38,6 +38,30 @@ export const projectsData: Project[] = [
     featured: true,
   },
   {
+    id: "kpum-insima",
+    name: "KPUM INSIMA - Pemilihan Umum Mahasiswa",
+    description:
+      "Platform e-voting pemilihan umum mahasiswa berbasis web untuk memfasilitasi proses pemungutan suara kampus secara aman, transparan, dan real-time.",
+    category: "full-stack",
+    image: "/work/kpum-insima.png",
+    link: "https://kpum.insima.ac.id/",
+    githubUrl: "https://github.com/kinur31",
+    technologies: ["React.js", "TypeScript", "Tailwind CSS", "Prisma ORM", "MySQL"],
+    featured: true,
+  },
+  {
+    id: "ternakindo-absensi",
+    name: "Sistem Presensi Ternakindo",
+    description:
+      "Aplikasi presensi dan manajemen kehadiran karyawan berbasis web & PWA dengan pelacakan data kehadiran secara real-time dan rekapitulasi terstruktur.",
+    category: "full-stack",
+    image: "/work/absensi-ternakindo.png",
+    link: "https://absensi.ternakindo.com/",
+    githubUrl: "https://github.com/kinur31",
+    technologies: ["React.js", "TypeScript", "Tailwind CSS", "Prisma ORM", "MySQL", "PWA"],
+    featured: true,
+  },
+  {
     id: "portfolio-web",
     name: "Portfolio Web",
     description:

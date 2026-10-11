@@ -40,11 +40,13 @@ const Work = () => {
             pagination={{ clickable: true }}
             navigation={true}
           >
-            {projectsData.slice(0, 5).map((project) => (
-              <SwiperSlide key={project.id} className="h-full pb-10">
-                <ProjectCard project={project} />
-              </SwiperSlide>
-            ))}
+            {projectsData
+              .filter((project) => project.featured)
+              .map((project) => (
+                <SwiperSlide key={project.id} className="h-full pb-10">
+                  <ProjectCard project={project} />
+                </SwiperSlide>
+              ))}
           </Swiper>
         </div>
       </div>
